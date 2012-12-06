@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="utf-8">
+  <title>Suncorp Frequent Learners | About</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Le styles -->
+  <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="../bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="../assets/css/site.css" rel="stylesheet">
+
+  <script type="text/javascript" src="https://assets.yammer.com/platform/yam.js"></script>
+  <script>
+	yam.config({appId: "OiXThFQRuihVxDIW2AMXfg"});
+	</script>
+  <script> yam.connect.embedFeed( { container: '#embedded-feed', network: 'suncorp.com.au', feedType: 'group', feedId: '908853'} ); </script>
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    `<![endif]-->
+
+      <!-- Fav and touch icons -->
+      <link rel="shortcut icon" href="../bootstrap/ico/favicon.ico">
+      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../bootstrap/ico/apple-touch-icon-144-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../bootstrap/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../bootstrap/ico/apple-touch-icon-72-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" href="../bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    </head>
+
+    <body>
+
+
+
+    <!-- NAVBAR
+    ================================================== -->
+    <!-- Wrap the .navbar in .container to center it on the page and provide easy way to target it with .navbar-wrapper. -->
+    <div class="container navbar-wrapper">
+
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Suncorp Frequent Learners</a>
+          <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="..\index.html">Home</a></li>
+              <li class="active"><a href=".">About</a></li>
+              <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Learning Links <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://www.yammer.com">Yammer</a></li>
+                  <li><a href="http://confluence.int.corp.sun">Confluence</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">External Tools</li>
+                  <li><a href="http://www.stackoverflow.com">Stack Overflow</a></li>
+                  <li><a href="https://www.coursera.org/">Coursera</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!-- /.navbar-inner -->
+      </div><!-- /.navbar -->
+    </div>
+
+   <img src="../assets/img/examples/slide-01-med.png" alt="">
+
+   <div class="container marketing">
+    <div class="row">
+      <div class="span12">
+        <h1>How is gamification part of Suncorp Frequent Learners?</h1>
+        <div class="row">
+          <div class="span8">
+            <p>Suncorp Frequent Learners intends to make learning fun by using elements of gamification to encourage collabative sharing and learning</p>
+            </br>
+            <p>Suncorp Frequent Learners will intergrate with available 3rd party systems to pull content and information, and collate into a central view of the world to advise the learning opportunities that are available.</p>
+            </br>
+            <p>The use of data from these external tools can also feed into to a game engine to track achievements and provide metrics around people's learning styles and behaviours, and provide reward and encouragement for those that <strong>share and learn</strong> with their peers within and external to suncorp.</p>
+            </br>
+            <p>Below is an example of intergation with yammer system using a simple points system where each post from a user is rewarded with a point - allowing for a ranking of users.  It demonstrates an example of taking data from an external system, feeding it into a (for now, rudimentary) gaming system and deriving some analytics based on the result.</p>
+            <div g-app="directSuperTrainingApp" id="ng-app" ng-controller="DirectSuperLearning">
+              <table class="table table-bordered" n>
+                <thead>
+                  <tr>
+                    <td><strong>Name</strong></td>
+                    <td><strong>Comments</strong></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="message in allMessages">
+                    <td>{{message.sender_name}}</td>
+                    <td>{{message.messages}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button id="buton" ng-click="fetch(yam);">Refresh List</button>
+            </div>
+          </div>
+          <div class="span4">
+      
+          <div id="embedded-feed"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /.container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script>
+		yam.getLoginStatus( function(response) {
+			if (response.authResponse) {
+				//alert("logged in");
+			} else {
+				// make the user login
+				yam.login( function (response) {
+				  if (response.authResponse) {
+					//alert("logged in");
+				  } else {
+					//alert("logged out");
+				  }
+				});
+			}
+		});
+	</script>
+    <!-- Load angular js from the google CDN -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+    <script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+    
+    <script src="../assets/js/gamification.js"></script>
+  </body>
+  </html>
